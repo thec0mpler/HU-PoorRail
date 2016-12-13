@@ -1,2 +1,2 @@
-# HU-PoorRail
+# HU-RichRail
 From PoorRail to RichRail
