@@ -5,11 +5,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    private static RichRail richRail;
 
     public static void main(String[] args) {
-        RichRail richRail = new RichRail();
+        richRail = new RichRail();
 
         launch(args);
+    }
+
+    public static RichRail getRichRail() {
+        return richRail;
     }
 
     @Override

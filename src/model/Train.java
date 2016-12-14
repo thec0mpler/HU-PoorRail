@@ -29,4 +29,8 @@ public class Train {
     public void removeVehicle(Vehicle vehicle) {
         this.vehicles.remove(vehicle);
     }
+
+    public String toString() {
+        return this.getName();
+    }
 }

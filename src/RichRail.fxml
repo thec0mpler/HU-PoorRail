@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxmlController.RichRailController">
    <children>
       <HBox spacing="20.0">
          <children>
-            <Label contentDisplay="TOP" text="Select train" />
-            <ComboBox prefWidth="150.0" />
+            <Label contentDisplay="TOP" maxHeight="1.7976931348623157E308" text="Select train" />
+            <ComboBox fx:id="trainCombo" prefWidth="150.0" />
             <Button mnemonicParsing="false" text="Add train" />
          </children>
          <padding>
