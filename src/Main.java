@@ -5,16 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private static RichRail richRail;
-
     public static void main(String[] args) {
-        richRail = new RichRail();
-
         launch(args);
-    }
-
-    public static RichRail getRichRail() {
-        return richRail;
     }
 
     @Override
@@ -22,7 +14,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("RichRail.fxml"));
 
         primaryStage.setTitle("RichRail");
-        primaryStage.setScene(new Scene(root, 400, 600));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
 
         primaryStage.show();
     }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.112"
+      fx:controller="fxmlController.TerminalController">
+    <Label maxHeight="1.7976931348623157E308" text="Log">
+        <VBox.margin>
+            <Insets bottom="10.0"/>
+        </VBox.margin>
+    </Label>
+    <TextArea editable="false" focusTraversable="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="300.0"
+              prefWidth="500.0" text="&gt; new train tr1&#10;&lt; New train &quot;tr1&quot; created"/>
+    <HBox>
+        <Label maxHeight="1.7976931348623157E308" text="&gt;">
+            <HBox.margin>
+                <Insets right="10.0"/>
+            </HBox.margin>
+        </Label>
+        <TextField HBox.hgrow="ALWAYS"/>
+        <VBox.margin>
+            <Insets top="20.0"/>
+        </VBox.margin>
+    </HBox>
+    <HBox>
+        <Pane HBox.hgrow="ALWAYS"/>
+        <Button fx:id="closeButton" mnemonicParsing="false" text="Close">
+            <HBox.margin>
+                <Insets top="20.0"/>
+            </HBox.margin>
+        </Button>
+        <Pane HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+</VBox>

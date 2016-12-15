@@ -1,14 +1,19 @@
-import model.Train;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RichRail {
+    private static RichRail richRail = new RichRail();
     private List<Train> trains;
 
-    public RichRail() {
-        this.trains =  new ArrayList<>();
-        this.trains.add(new Train("Train 1"));
+    private RichRail() {
+        this.trains = new ArrayList<>();
+        this.trains.add(new Train("Train 4"));
+    }
+
+    public static RichRail getInstance() {
+        return richRail;
     }
 
     public List<Train> getTrains() {
