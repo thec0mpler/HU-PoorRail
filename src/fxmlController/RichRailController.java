@@ -18,6 +18,9 @@ public class RichRailController implements Initializable {
     private ComboBox<Train> trainCombo;
 
     @FXML
+    private Button newTrainButton;
+
+    @FXML
     private Button openTerminalButton;
 
     @Override
@@ -26,6 +29,12 @@ public class RichRailController implements Initializable {
 
         trainCombo.setOnAction(event ->
                 System.out.println("Selected train: " + trainCombo.getSelectionModel().getSelectedItem())
+        );
+
+        newTrainButton.setOnAction(event ->
+                new NewTrainController().init(
+                        newTrainButton.getScene().getWindow()
+                )
         );
 
         openTerminalButton.setOnAction(event ->

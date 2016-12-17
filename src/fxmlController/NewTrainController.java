@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -15,6 +16,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewTrainController implements Initializable {
+    @FXML
+    private TextField nameTextField;
+
     @FXML
     private Button addButton;
 
@@ -39,5 +43,17 @@ public class NewTrainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        addButton.setOnAction(event -> submit());
+    }
+
+    private void submit() {
+        // System.out.println(nameTextField.getText());
+
+        close();
+    }
+
+    private void close() {
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        stage.close();
     }
 }

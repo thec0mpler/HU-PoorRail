@@ -13,7 +13,7 @@
         <Label maxHeight="1.7976931348623157E308" text="Select train"/>
         <ComboBox fx:id="trainCombo" prefWidth="200.0"/>
         <Pane HBox.hgrow="ALWAYS"/>
-        <Button mnemonicParsing="false" text="Add train"/>
+        <Button fx:id="newTrainButton" mnemonicParsing="false" text="Add train"/>
     </HBox>
     <Separator/>
     <Label text="Train" VBox.vgrow="ALWAYS">
