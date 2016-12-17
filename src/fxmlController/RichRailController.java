@@ -1,5 +1,6 @@
 package fxmlController;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,9 +10,11 @@ import model.Train;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
-public class RichRailController implements Initializable {
+public class RichRailController implements Initializable, Observer {
     private RichRail richRail = RichRail.getInstance();
 
     @FXML
@@ -28,7 +31,7 @@ public class RichRailController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.setTrainCombo(richRail.getTrains());
+        richRail.addObserver(this);
 
         trainCombo.setOnAction(event ->
                 System.out.println("Selected train: " + trainCombo.getSelectionModel().getSelectedItem())
@@ -42,18 +45,28 @@ public class RichRailController implements Initializable {
 
         addWagonButton.setOnAction(event ->
                 new WagonController().init(
-                        addWagonButton.getScene().getWindow()
+                    addWagonButton.getScene().getWindow()
                 )
         );
 
         openTerminalButton.setOnAction(event ->
-            new TerminalController().init(
+                new TerminalController().init(
                     openTerminalButton.getScene().getWindow()
-            )
+                )
         );
     }
 
-    private void setTrainCombo(List<Train> trains) {
-        trainCombo.getItems().setAll(trains);
+    private void setTrainCombo() {
+        trainCombo.getItems().setAll(
+                richRail.getTrains()
+        );
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof RichRail) {
+            setTrainCombo();
+            trainCombo.getSelectionModel().selectLast();
+        }
     }
 }

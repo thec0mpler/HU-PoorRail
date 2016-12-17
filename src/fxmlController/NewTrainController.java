@@ -7,15 +7,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import model.RichRail;
+import model.Train;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewTrainController implements Initializable {
+    private RichRail richRail = RichRail.getInstance();
+    private Window parentWindow;
+
     @FXML
     private TextField nameTextField;
 
@@ -25,17 +31,20 @@ public class NewTrainController implements Initializable {
     void init(Window window) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/NewTrain.fxml"));
-            Stage terminalStage = new Stage();
+            Stage stage = new Stage();
 
-            terminalStage.setTitle("New train");
-            terminalStage.setScene(new Scene(root));
-            terminalStage.setResizable(false);
-            terminalStage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("New train");
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
 
-            if (window != null)
-                terminalStage.initOwner(window);
+            if (window != null) {
+                parentWindow = window;
 
-            terminalStage.showAndWait();
+                stage.initOwner(window);
+            }
+
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,11 +52,18 @@ public class NewTrainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        nameTextField.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER))
+                submit();
+        });
+
         addButton.setOnAction(event -> submit());
     }
 
     private void submit() {
-        // System.out.println(nameTextField.getText());
+        richRail.addTrain(
+                new Train(nameTextField.getText())
+        );
 
         close();
     }
