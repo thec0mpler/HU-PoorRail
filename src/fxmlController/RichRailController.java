@@ -21,6 +21,9 @@ public class RichRailController implements Initializable {
     private Button newTrainButton;
 
     @FXML
+    private Button addWagonButton;
+
+    @FXML
     private Button openTerminalButton;
 
     @Override
@@ -34,6 +37,12 @@ public class RichRailController implements Initializable {
         newTrainButton.setOnAction(event ->
                 new NewTrainController().init(
                         newTrainButton.getScene().getWindow()
+                )
+        );
+
+        addWagonButton.setOnAction(event ->
+                new WagonController().init(
+                        addWagonButton.getScene().getWindow()
                 )
         );
 
