@@ -24,6 +24,9 @@ public class RichRailController implements Initializable, Observer {
     private Button newTrainButton;
 
     @FXML
+    private Button deleteTrainButton;
+
+    @FXML
     private Button addWagonButton;
 
     @FXML
@@ -43,6 +46,8 @@ public class RichRailController implements Initializable, Observer {
                 )
         );
 
+        deleteTrainButton.setOnAction(event -> deleteTrain());
+
         addWagonButton.setOnAction(event ->
                 new WagonController().init(
                     addWagonButton.getScene().getWindow()
@@ -60,6 +65,11 @@ public class RichRailController implements Initializable, Observer {
         trainCombo.getItems().setAll(
                 richRail.getTrains()
         );
+    }
+
+    private void deleteTrain() {
+        Train selectedTrain = trainCombo.getSelectionModel().getSelectedItem();
+        richRail.removeTrain(selectedTrain);
     }
 
     @Override
