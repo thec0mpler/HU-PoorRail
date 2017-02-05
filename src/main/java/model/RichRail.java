@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public class RichRail extends Observable {
+public class RichRail extends Observable { // Wat doet Observalbe? [farshid]
     private static RichRail richRail = new RichRail();
     private List<Train> trains;
 
@@ -14,7 +14,7 @@ public class RichRail extends Observable {
 
     public static RichRail getInstance() {
         return richRail;
-    }
+    } // Singleton? [moeten patterns benoemen]
 
     public List<Train> getTrains() {
         return this.trains;

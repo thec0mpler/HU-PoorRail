@@ -22,9 +22,9 @@ public class Train {
         return vehicles;
     }
 
-    public void addVehicle(Vehicle vehicle) {
-        this.vehicles.add(vehicle);
-    }
+    public void addVehicle(Vehicle vehicle) {   //Wrm kan ik dit niet aanroepen bij main?? [farshid]
+        this.vehicles.add(vehicle);}
+
 
     public void removeVehicle(Vehicle vehicle) {
         this.vehicles.remove(vehicle);
@@ -32,5 +32,7 @@ public class Train {
 
     public String toString() {
         return this.getName();
-    }
+
 }
+
+        }
