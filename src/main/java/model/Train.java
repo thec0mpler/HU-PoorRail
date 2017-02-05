@@ -1,8 +1,9 @@
 package model;
 
 import java.util.List;
+import java.util.Observable;
 
-public class Train {
+public class Train extends Observable {
     private String name;
     private List<Vehicle> vehicles;
 
@@ -16,6 +17,8 @@ public class Train {
 
     public void setName(String name) {
         this.name = name;
+
+        changed();
     }
 
     public List<Vehicle> getVehicles() {
@@ -24,13 +27,22 @@ public class Train {
 
     public void addVehicle(Vehicle vehicle) {
         this.vehicles.add(vehicle);
+
+        changed();
     }
 
     public void removeVehicle(Vehicle vehicle) {
         this.vehicles.remove(vehicle);
+
+        changed();
     }
 
     public String toString() {
         return this.getName();
+    }
+
+    public void changed() {
+        setChanged();
+        notifyObservers();
     }
 }
