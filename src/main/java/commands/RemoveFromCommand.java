@@ -34,8 +34,9 @@ public class RemoveFromCommand extends Command {
         if (null == train)
             return "ERROR: train does not exist";
 
-        train.removeVehicle(wagon);
+        if (train.removeVehicle(wagon))
+            return "Wagon '" + wagon.getName() + "' removed from '" + train.getName() + "'";
 
-        return "Wagon '" + wagon.getName() + "' removed from '" + train.getName() + "'";
+        return "Wagon '" + wagon.getName() + "' was not added to '" + train.getName() + "'";
     }
 }

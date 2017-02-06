@@ -47,10 +47,12 @@ public class Train extends Observable {
         return seats;
     }
 
-    public void removeVehicle(Vehicle vehicle) {
-        this.vehicles.remove(vehicle);
+    public boolean removeVehicle(Vehicle vehicle) {
+        boolean result = this.vehicles.remove(vehicle);
 
         changed();
+
+        return result;
     }
 
     public boolean equals(Object object) {

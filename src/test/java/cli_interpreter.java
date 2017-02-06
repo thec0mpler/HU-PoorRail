@@ -24,6 +24,7 @@ public class cli_interpreter {
         System.out.println(client.execute("new wagon wg1"));
         System.out.println(client.execute("add wg1 to tr1"));
         System.out.println(client.execute("remove wg1 from tr1"));
+        System.out.println(client.execute("remove wg2 from tr1"));
     }
 
     public static void main2() throws Exception {
