@@ -3,8 +3,8 @@ package commands;
 import cli_interpreter.CommandParser;
 import model.vehicle.Wagon;
 
-public class GetNumSeatsWagon extends Command {
-    public GetNumSeatsWagon() {
+public class GetNumSeatsWagonCommand extends Command {
+    public GetNumSeatsWagonCommand() {
         super("getnumseats wagon");
     }
 

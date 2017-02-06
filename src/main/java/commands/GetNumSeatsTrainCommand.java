@@ -4,8 +4,8 @@ import cli_interpreter.CommandParser;
 import model.Train;
 import model.vehicle.Wagon;
 
-public class GetNumSeatsTrain extends Command {
-    public GetNumSeatsTrain() {
+public class GetNumSeatsTrainCommand extends Command {
+    public GetNumSeatsTrainCommand() {
         super("getnumseats train");
     }
 

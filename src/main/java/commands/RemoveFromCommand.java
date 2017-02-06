@@ -5,17 +5,17 @@ import cli_interpreter.CommandParser;
 import model.Train;
 import model.vehicle.Wagon;
 
-public class AddToCommand extends Command {
-    public AddToCommand() {
-        super("add");
+public class RemoveFromCommand extends Command {
+    public RemoveFromCommand() {
+        super("remove");
     }
 
     @Override
     public cli_interpreter.Command getInterpreterCommand() {
         cli_interpreter.Command command;
-        command = new cli_interpreter.Command("add");
+        command = new cli_interpreter.Command("remove");
         command.setRequiredValue(true);
-        command.addArgument(new Argument("to", true));
+        command.addArgument(new Argument("from", true));
 
         return command;
     }
@@ -24,7 +24,7 @@ public class AddToCommand extends Command {
     public String execute(CommandParser parser) throws Exception {
         Client client = Client.getInstance();
         String wagonString = parser.getRequiredArgument();
-        String trainString = parser.valueOf("to");
+        String trainString = parser.valueOf("from");
 
         Wagon wagon = client.getWagon(wagonString);
         Train train = richRail.getTrain(trainString);
@@ -34,9 +34,8 @@ public class AddToCommand extends Command {
         if (null == train)
             return "ERROR: train does not exist";
 
-        if (train.addVehicle(wagon))
-            return "Wagon '" + wagon.getName() + "' added to '" + train.getName() + "'";
+        train.removeVehicle(wagon);
 
-        return "Wagon '" + wagon.getName() + "' already added";
+        return "Wagon '" + wagon.getName() + "' removed from '" + train.getName() + "'";
     }
 }

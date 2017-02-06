@@ -26,12 +26,16 @@ public class Train extends Observable {
         return vehicles;
     }
 
-    public void addVehicle(Vehicle vehicle) {
+    public boolean addVehicle(Vehicle vehicle) {
         if (!this.vehicles.contains(vehicle)) {
             this.vehicles.add(vehicle);
+
+            return true;
         }
 
         changed();
+
+        return false;
     }
 
     public int getSeats() {

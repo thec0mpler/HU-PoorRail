@@ -17,8 +17,11 @@ public class Client {
         this.commands.add(new NewWagonCommand());
         this.commands.add(new GetWagonsCommand());
         this.commands.add(new AddToCommand());
-        this.commands.add(new GetNumSeatsWagon());
-        this.commands.add(new GetNumSeatsTrain());
+        this.commands.add(new GetNumSeatsWagonCommand());
+        this.commands.add(new GetNumSeatsTrainCommand());
+        this.commands.add(new DeleteWagonCommand());
+        this.commands.add(new DeleteTrainCommand());
+        this.commands.add(new RemoveFromCommand());
     }
 
     public static Client getInstance() {
@@ -43,6 +46,10 @@ public class Client {
         } else {
             return "Wagon name already exists";
         }
+    }
+
+    public void removeWagon(Wagon wagon) {
+        wagons.remove(wagon);
     }
 
     public Wagon getWagon(String name) {

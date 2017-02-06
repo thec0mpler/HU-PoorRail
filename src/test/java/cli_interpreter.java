@@ -15,7 +15,15 @@ public class cli_interpreter {
         System.out.println(client.execute("add wg2 to tr1"));
         System.out.println(client.execute("getnumseats wagon wg2"));
         System.out.println(client.execute("add wg1 to tr1"));
+        System.out.println(client.execute("add wg2 to tr1"));
         System.out.println(client.execute("getnumseats train tr1"));
+        System.out.println(client.execute("delete wagon wg1"));
+        System.out.println(client.execute("get wagons"));
+        System.out.println(client.execute("delete train tr1"));
+        System.out.println(client.execute("new train tr1"));
+        System.out.println(client.execute("new wagon wg1"));
+        System.out.println(client.execute("add wg1 to tr1"));
+        System.out.println(client.execute("remove wg1 from tr1"));
     }
 
     public static void main2() throws Exception {
