@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The command parser reads the command with the required arguments and checks if the required values are set.
+ */
 public class CommandParser {
     private Command command;
     private List<String> context = new ArrayList<>();
