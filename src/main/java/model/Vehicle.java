@@ -10,7 +10,7 @@ public abstract class Vehicle {
         return this.seats;
     }
 
-    protected void setSeats(int seats) {
+    public void setSeats(int seats) {
         this.seats = seats;
     }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import model.vehicle.Wagon;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,16 +23,34 @@ public class RichRail extends Observable {
         return this.trains;
     }
 
-    public void addTrain(Train train) {
-        this.trains.add(train);
+    public boolean addTrain(Train train) {
+        if (!trains.contains(train)) {
+            this.trains.add(train);
 
-        changed();
+            changed();
+
+            return true;
+        }
+
+        return false;
     }
 
     public void removeTrain(Train train) {
         this.trains.remove(train);
 
         changed();
+    }
+
+    public Train getTrain(String name) {
+        Train tempTrain = new Train(name);
+
+        for (Train train : trains) {
+            if (train.equals(tempTrain)) {
+                return train;
+            }
+        }
+
+        return null;
     }
 
     public void changed() {

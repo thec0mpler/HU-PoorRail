@@ -33,6 +33,16 @@ public class Command {
     }
 
     public CommandParser parse(Context context) {
+        // Remove command name
+        String string = context.getString().substring(name.length());
+
+        // Remove first space, if exist
+        if (string.startsWith(" ")) {
+            string = string.substring(1);
+        }
+
+        context = new Context(string);
+
         return new CommandParser(this, context);
     }
 }

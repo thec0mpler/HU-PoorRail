@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * The command parser reads the command with the required arguments and checks if the required values are set.
+ * The interpreterCommand parser reads the interpreterCommand with the required arguments and checks if the required values are set.
  */
 public class CommandParser {
     private Command command;
@@ -24,12 +24,22 @@ public class CommandParser {
         return null != context;
     }
 
-    public boolean has(String argument) {
-        if (command.hasRequiredArgument())
-            context = context.subList(1, context.size());
+    public String getRequiredArgument() throws Exception {
+        if (hasRequiredArgument()) {
+            return context.get(0);
+        }
 
-        return context.indexOf(argument) != -1            // value exist
-                && (context.indexOf(argument) + 1) != -1; // next value exist
+        return "";
+    }
+
+    public boolean has(String argument) {
+        List<String> context2 = context;
+
+        if (command.hasRequiredArgument())
+            context2 = context.subList(1, context.size());
+
+        return context2.indexOf(argument) != -1            // value exist
+                && (context2.indexOf(argument) + 1) != -1; // next value exist
     }
 
     public String valueOf(String argument) throws Exception {
