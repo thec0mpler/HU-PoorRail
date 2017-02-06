@@ -27,9 +27,9 @@ public class GetWagonsCommand extends Command {
         if (wagons.isEmpty())
             return "There are no wagons";
 
-        String output = "Wagons:\n";
+        String output = "Wagons:";
         for (Wagon wagon : wagons) {
-            output += "\t'" + wagon.getName() + "', seats: " + wagon.getSeats() + "\n";
+            output += "\n\t'" + wagon.getName() + "', seats: " + wagon.getSeats();
         }
 
         return output;

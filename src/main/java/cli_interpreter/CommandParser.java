@@ -38,8 +38,8 @@ public class CommandParser {
         if (command.hasRequiredArgument())
             context2 = context.subList(1, context.size());
 
-        return context2.indexOf(argument) != -1            // value exist
-                && (context2.indexOf(argument) + 1) != -1; // next value exist
+        return context2.indexOf(argument) != -1                        // value exist
+                && (context2.indexOf(argument) + 1) < context2.size(); // next value exist
     }
 
     public String valueOf(String argument) throws Exception {

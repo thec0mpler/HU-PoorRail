@@ -17,6 +17,8 @@ public class Client {
         this.commands.add(new NewWagonCommand());
         this.commands.add(new GetWagonsCommand());
         this.commands.add(new AddToCommand());
+        this.commands.add(new GetNumSeatsWagon());
+        this.commands.add(new GetNumSeatsTrain());
     }
 
     public static Client getInstance() {

@@ -34,6 +34,15 @@ public class Train extends Observable {
         changed();
     }
 
+    public int getSeats() {
+        int seats = 0;
+        for (Vehicle vehicle : vehicles) {
+            seats += vehicle.getSeats();
+        }
+
+        return seats;
+    }
+
     public void removeVehicle(Vehicle vehicle) {
         this.vehicles.remove(vehicle);
 

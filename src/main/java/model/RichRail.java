@@ -53,6 +53,22 @@ public class RichRail extends Observable {
         return null;
     }
 
+    public Wagon getWagon(String name) {
+        for (Train train : trains) {
+            for (Vehicle vehicle : train.getVehicles()) {
+                if (vehicle instanceof Wagon) {
+                    Wagon wagon = (Wagon) vehicle;
+
+                    if (wagon.getName().equals(name)) {
+                        return wagon;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
     public void changed() {
         setChanged();
         notifyObservers();
