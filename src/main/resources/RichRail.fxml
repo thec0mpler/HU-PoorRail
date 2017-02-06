@@ -33,7 +33,7 @@
             <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
         </padding>
         <Label maxHeight="1.7976931348623157E308" prefWidth="60.0" text="Name" />
-        <TextField prefWidth="200.0" />
+        <TextField fx:id="trainNameTextField" prefWidth="200.0" />
         <Pane HBox.hgrow="ALWAYS" />
         <Button fx:id="deleteTrainButton" mnemonicParsing="false" text="Delete train" />
     </HBox>

@@ -53,11 +53,13 @@ public class NewTrainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nameTextField.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode().equals(KeyCode.ENTER))
-                submit();
+                if (keyEvent.getCode().equals(KeyCode.ENTER))
+                    submit();
         });
 
-        addButton.setOnAction(event -> submit());
+        addButton.setOnAction(event ->
+                submit()
+        );
     }
 
     private void submit() {

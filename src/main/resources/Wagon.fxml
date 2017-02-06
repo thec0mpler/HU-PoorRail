@@ -27,7 +27,7 @@
                 <HBox.margin>
                     <Insets right="10.0" />
                 </HBox.margin></Label>
-            <TextField fx:id="seatsTextField" prefWidth="200.0" />
+            <TextField fx:id="seatsTextField" prefWidth="200.0" text="20" />
         </children>
     </HBox>
    <HBox>

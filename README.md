@@ -1,2 +1,3 @@
 # HU-model.RichRail
-From PoorRail to model.RichRail
+
+From PoorRail to RichRail
