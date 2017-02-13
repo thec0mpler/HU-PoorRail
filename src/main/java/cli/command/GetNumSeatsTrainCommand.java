@@ -1,8 +1,7 @@
-package commands;
+package cli.command;
 
-import cli_interpreter.CommandParser;
+import command_line_parser.CommandParser;
 import model.Train;
-import model.vehicle.Wagon;
 
 public class GetNumSeatsTrainCommand extends Command {
     public GetNumSeatsTrainCommand() {
@@ -10,12 +9,10 @@ public class GetNumSeatsTrainCommand extends Command {
     }
 
     @Override
-    public cli_interpreter.Command getInterpreterCommand() {
-        cli_interpreter.Command command;
-        command = new cli_interpreter.Command("getnumseats train");
-        command.setRequiredValue(true);
-
-        return command;
+    public command_line_parser.Command getParserCommand() {
+        return parserFacade
+                .newCommand()
+                .setRequiredValue(true);
     }
 
     @Override

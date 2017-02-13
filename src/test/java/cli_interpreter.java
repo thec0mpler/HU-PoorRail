@@ -1,46 +1,86 @@
-import cli_interpreter.Command;
-import cli_interpreter.Context;
-import cli_interpreter.CommandParser;
-import cli_interpreter.Argument;
-import commands.Client;
+import cli.Client;
+import cli.command.*;
+import command_line_parser.Command;
+import command_line_parser.CommandParser;
+import command_line_parser.ParserFacade;
 
 public class cli_interpreter {
-    public static void main(String[] args) throws Exception {
+    public static void main(java.lang.String[] args) throws Exception {
         Client client = Client.getInstance();
-        System.out.println(client.execute("new wagon wg1"));
-        System.out.println(client.execute("new wagon wg2 numseats 25"));
-        System.out.println(client.execute("get wagons"));
-        System.out.println(client.execute("new train tr1"));
-        System.out.println(client.execute("new train tr1"));
-        System.out.println(client.execute("add wg2 to tr1"));
-        System.out.println(client.execute("getnumseats wagon wg2"));
+
+        client.addCommand(new NewTrainCommand());
+        client.addCommand(new NewWagonCommand());
+        client.addCommand(new GetWagonsCommand());
+        client.addCommand(new AddToCommand());
+        client.addCommand(new GetNumSeatsWagonCommand());
+        client.addCommand(new GetNumSeatsTrainCommand());
+        client.addCommand(new DeleteWagonCommand());
+        client.addCommand(new DeleteTrainCommand());
+        client.addCommand(new RemoveFromCommand());
+
         System.out.println(client.execute("add wg1 to tr1"));
-        System.out.println(client.execute("add wg2 to tr1"));
-        System.out.println(client.execute("getnumseats train tr1"));
-        System.out.println(client.execute("delete wagon wg1"));
-        System.out.println(client.execute("get wagons"));
-        System.out.println(client.execute("delete train tr1"));
-        System.out.println(client.execute("new train tr1"));
-        System.out.println(client.execute("new wagon wg1"));
-        System.out.println(client.execute("add wg1 to tr1"));
-        System.out.println(client.execute("remove wg1 from tr1"));
-        System.out.println(client.execute("remove wg2 from tr1"));
+
+//        List<String> arguments = new ArrayList<>();
+//        arguments.add("argument1 ");
+//        arguments.add("argument2 ");
+//        arguments.add("argument3 ");
+//
+//        List<String> newContext = new ArrayList<>();
+//
+//        for (String argument : arguments) {
+//            newContext.add(argument.trim());
+//        }
+//
+//        System.out.println(newContext);
+//
+//        System.exit(0);
+
+//        String input = "wg2 numseats 25";
+//        ParserCommand command = new ParserCommand()
+//                .setRequiredValue(true)
+//                .addArgument(new Argument("numseats"));
+//        CommandParser parser = command.parse(input);
+//
+//        System.out.println(parser.getRequiredArgument());
+//
+//        System.exit(0);
+
+//        System.out.println(client.execute("new wagon wg1"));
+//        System.out.println(client.execute("new wagon wg2 numseats 25"));
+//        System.out.println(client.execute("get wagons"));
+//        System.out.println(client.execute("new train tr1"));
+//        System.out.println(client.execute("new train tr1"));
+//        System.out.println(client.execute("add wg2 to tr1"));
+//        System.out.println(client.execute("getnumseats wagon wg2"));
+//        System.out.println(client.execute("add wg1 to tr1"));
+//        System.out.println(client.execute("add wg2 to tr1"));
+//        System.out.println(client.execute("getnumseats train tr1"));
+//        System.out.println(client.execute("delete wagon wg1"));
+//        System.out.println(client.execute("get wagons"));
+//        System.out.println(client.execute("delete train tr1"));
+//        System.out.println(client.execute("new train tr1"));
+//        System.out.println(client.execute("new wagon wg1"));
+//        System.out.println(client.execute("add wg1 to tr1"));
+//        System.out.println(client.execute("remove wg1 from tr1"));
+//        System.out.println(client.execute("remove wg2 from tr1"));
     }
 
     public static void main2() throws Exception {
-        // Command that can be used in the terminal
-        String commandString = "new wagon wg1 numseats 15";
+        ParserFacade parserFacade = new ParserFacade();
 
-        // Create a new interpreterCommand with the first value required without a name and a optional argument
-        Command command = new Command("new wagon");
+        // ParserCommand that can be used in the terminal
+        java.lang.String commandString = "new wagon wg1 numseats 15";
+
+        // Create a new command with the first value required without a name and a optional argument
+        Command command = parserFacade.newCommand();
         command.setRequiredValue(true);
-        command.addArgument(new Argument("numseats"));
+        command.addArgument(parserFacade.newArgument("numseats"));
 
-        // Parse the interpreterCommand
-        CommandParser parser = command.parse(new Context(commandString));
+        // Parse the command
+        CommandParser parser = parserFacade.newParser(command, commandString);
 
         // Print some output
-        System.out.println(parser.hasRequiredArgument());
+        System.out.println(parser.getRequiredArgument());
 
         if (parser.has("numseats"))
             System.out.println(parser.valueOf("numseats"));
