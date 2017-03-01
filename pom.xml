@@ -22,11 +22,6 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>net.sf.jopt-simple</groupId>
-            <artifactId>jopt-simple</artifactId>
-            <version>6.0-alpha-1</version>
-        </dependency>
     </dependencies>
 </project>
 
