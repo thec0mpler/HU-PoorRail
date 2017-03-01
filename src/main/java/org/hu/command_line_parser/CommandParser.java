@@ -67,7 +67,7 @@ public class CommandParser {
      */
     public String getRequiredArgument() throws Exception {
         if (!command.hasRequiredValue()) {
-            throw new Exception("ParserCommand has not a required argument");
+            throw new Exception("Command has not a required argument");
         }
 
         return context.get(0);
@@ -106,13 +106,56 @@ public class CommandParser {
      *
      * @throws Exception If the command is not valid
      */
-    public void validate() throws Exception {
-        // Check if a required argument has a value
-        for (Argument argument : command.getArguments()) {
-            if (argument.isRequired() && !has(argument.getName()))
-                throw new Exception("ParserCommand has not the required argument: " + argument.getName());
+    private void validate() throws Exception {
+        // Check if the first required argument exists
+        if (null == getRequiredArgument()) {
+            throw new Exception("Command has not the first required argument");
         }
 
-        /* TODO: check for not used/invalid arguments */
+        // Get possible arguments
+        List<Argument> commandArguments = command.getArguments();
+
+        // Get required arguments
+        List<Argument> requiredCommandArguments = new ArrayList<>();
+
+        for (Argument argument : commandArguments) {
+            if (argument.isRequired()) {
+                requiredCommandArguments.add(argument);
+            }
+        }
+
+        // If the previous argument was a command
+        boolean previousCommand = false;
+
+        // Size of the arguments list
+        int argumentsSize = this.getArguments().size();
+
+        // Loop through every argument
+        int i = 1;
+        for (String argumentString : this.getArguments()) {
+            Argument argument = new Argument(argumentString);
+
+            // Check if it is a command, but skip if the previous was a command
+            if (commandArguments.contains(argument) && !previousCommand) {
+                previousCommand = true;
+
+                // If it is a required argument, remove is from the list
+                if (requiredCommandArguments.contains(argument)) {
+                    requiredCommandArguments.remove(argument);
+                }
+
+                // Check if it has a next value
+                if (argumentsSize <= i) {
+                    throw new Exception("Command has not a value: " + argument.getName());
+                }
+            }
+
+            i++;
+        }
+
+        // If the required arguments list is not empty
+        if (!requiredCommandArguments.isEmpty()) {
+            throw new Exception("Command required: " + requiredCommandArguments.get(0));
+        }
     }
 }

@@ -18,7 +18,9 @@ public class cli_interpreter {
         client.addCommand(new DeleteTrainCommand());
         client.addCommand(new RemoveFromCommand());
 
-        System.out.println(client.execute("add wg1 to tr1"));
+
+
+        System.out.println(client.execute("add wg1 to"));
 
 //        List<String> arguments = new ArrayList<>();
 //        arguments.add("argument1 ");

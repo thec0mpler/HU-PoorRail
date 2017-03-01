@@ -16,8 +16,6 @@ public class AddToCommand extends Command {
 
     @Override
     public String execute(CommandParser parser) throws Exception {
-        System.out.println(client);
-
         return null;
     }
 }

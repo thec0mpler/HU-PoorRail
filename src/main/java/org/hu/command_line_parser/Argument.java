@@ -40,9 +40,28 @@ public class Argument {
     /**
      * Check if the argument is required.
      *
-     * @return True if the argument is required, otherwise
+     * @return True if the argument is required, otherwise false
      */
     boolean isRequired() {
         return required;
+    }
+
+    /**
+     * Check if the argument is the same by name.
+     *
+     * @param object Object to be checked
+     * @return True if the argument names are the same, otherwise false
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Argument) {
+            Argument argument = (Argument) object;
+
+            if (this.name.equals(argument.getName())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
