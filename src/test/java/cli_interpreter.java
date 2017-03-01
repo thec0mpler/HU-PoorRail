@@ -1,8 +1,8 @@
-import cli.Client;
-import cli.command.*;
-import command_line_parser.Command;
-import command_line_parser.CommandParser;
-import command_line_parser.ParserFacade;
+import org.hu.richrail.cli.Client;
+import org.hu.richrail.cli.command.*;
+import org.hu.command_line_parser.Command;
+import org.hu.command_line_parser.CommandParser;
+import org.hu.command_line_parser.ParserFacade;
 
 public class cli_interpreter {
     public static void main(java.lang.String[] args) throws Exception {
