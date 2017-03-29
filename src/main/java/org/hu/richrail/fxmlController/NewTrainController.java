@@ -11,8 +11,8 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.hu.richrail.model.RichRail;
-import org.hu.richrail.model.Train;
+import org.hu.richrail.model_old.RichRail;
+import org.hu.richrail.model_old.Train;
 
 import java.io.IOException;
 import java.net.URL;

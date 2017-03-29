@@ -1,78 +1,35 @@
 package org.hu.richrail.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-
-public class Train extends Observable {
+public class Train {
     private String name;
-    private List<Vehicle> vehicles = new ArrayList<>();
 
-    public Train(String name) {
-        this.name = name;
+    public Train(String name) throws Exception {
+        setName(name);
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws Exception {
+        if (name.isEmpty())
+            throw new Exception("Name is empty, not allowed!");
+
         this.name = name;
-
-        changed();
     }
 
-    public List<Vehicle> getVehicles() {
-        return vehicles;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Train train = (Train) o;
+
+        return name.equals(train.name);
     }
 
-    public boolean addVehicle(Vehicle vehicle) {
-        if (!this.vehicles.contains(vehicle)) {
-            this.vehicles.add(vehicle);
-
-            return true;
-        }
-
-        changed();
-
-        return false;
-    }
-
-    public int getSeats() {
-        int seats = 0;
-        for (Vehicle vehicle : vehicles) {
-            seats += vehicle.getSeats();
-        }
-
-        return seats;
-    }
-
-    public boolean removeVehicle(Vehicle vehicle) {
-        boolean result = this.vehicles.remove(vehicle);
-
-        changed();
-
-        return result;
-    }
-
-    public boolean equals(Object object) {
-        if (object instanceof Train) {
-            Train train = (Train) object;
-
-            if (this.getName().equals(train.getName())) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public String toString() {
-        return this.getName();
-    }
-
-    public void changed() {
-        setChanged();
-        notifyObservers();
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }

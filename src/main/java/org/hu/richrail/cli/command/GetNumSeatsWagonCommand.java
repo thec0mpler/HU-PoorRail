@@ -1,7 +1,7 @@
 package org.hu.richrail.cli.command;
 
 import org.hu.command_line_parser.CommandParser;
-import org.hu.richrail.model.vehicle.Wagon;
+import org.hu.richrail.model_old.vehicle.Wagon;
 
 public class GetNumSeatsWagonCommand extends Command {
     public GetNumSeatsWagonCommand() {

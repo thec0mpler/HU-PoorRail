@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import org.hu.richrail.model.RichRail;
-import org.hu.richrail.model.Train;
+import org.hu.richrail.model_old.RichRail;
+import org.hu.richrail.model_old.Train;
 
 import java.net.URL;
 import java.util.*;

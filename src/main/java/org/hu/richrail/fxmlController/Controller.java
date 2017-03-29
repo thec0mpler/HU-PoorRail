@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.hu.richrail.model.RichRail;
+import org.hu.richrail.model_old.RichRail;
 
 import java.io.IOException;
 
