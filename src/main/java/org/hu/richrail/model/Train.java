@@ -32,4 +32,12 @@ public class Train {
     public int hashCode() {
         return name.hashCode();
     }
+
+    public int getSeats() {
+        return 0;
+    }
+
+    public String toString() {
+        return name;
+    }
 }

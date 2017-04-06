@@ -11,15 +11,13 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.hu.richrail.model_old.RichRail;
-import org.hu.richrail.model_old.Train;
+import org.hu.richrail.model.Train;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NewTrainController implements Initializable {
-    private RichRail richRail = RichRail.getInstance();
+public class NewTrainController extends Controller implements Initializable {
     private Window parentWindow;
 
     @FXML
@@ -63,9 +61,13 @@ public class NewTrainController implements Initializable {
     }
 
     private void submit() {
-        richRail.addTrain(
-                new Train(nameTextField.getText())
-        );
+        try {
+            trainManager.addTrain(
+                    new Train(nameTextField.getText())
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         close();
     }
@@ -73,5 +75,10 @@ public class NewTrainController implements Initializable {
     private void close() {
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    protected void show() {
+
     }
 }

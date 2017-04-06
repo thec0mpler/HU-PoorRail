@@ -1,6 +1,7 @@
 package org.hu.richrail.cli.command;
 
 import org.hu.command_line_parser.CommandParser;
+import org.hu.richrail.model.Wagon;
 
 public class GetWagonsCommand extends Command {
     public GetWagonsCommand() {
@@ -14,6 +15,12 @@ public class GetWagonsCommand extends Command {
 
     @Override
     public String execute(CommandParser parser) throws Exception {
-        return null;
+        String output = "Wagons:\n";
+
+        for (Wagon wagon : trainManager.getWagons()) {
+            output += wagon.getName() + "\n";
+        }
+
+        return output;
     }
 }

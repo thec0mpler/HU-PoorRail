@@ -1,7 +1,7 @@
 package org.hu.richrail.cli.command;
 
 import org.hu.command_line_parser.CommandParser;
-import org.hu.richrail.model_old.Train;
+import org.hu.richrail.model.Train;
 
 public class DeleteTrainCommand extends Command {
     public DeleteTrainCommand() {
@@ -17,10 +17,10 @@ public class DeleteTrainCommand extends Command {
     @Override
     public String execute(CommandParser parser) throws Exception {
         String trainName = parser.getRequiredArgument();
-        Train train = richRail.getTrain(trainName);
+        Train train = trainManager.getTrainByName(trainName);
 
         if (null != train) {
-            richRail.removeTrain(train);
+            trainManager.removeTrain(train);
 
             return "Train '" + trainName + "' deleted";
         }

@@ -1,12 +1,12 @@
 package org.hu.richrail.cli.command;
 
-import org.hu.richrail.cli.Client;
 import org.hu.command_line_parser.CommandParser;
 import org.hu.command_line_parser.ParserFacade;
-import org.hu.richrail.model_old.RichRail;
+import org.hu.richrail.cli.Client;
+import org.hu.richrail.model.TrainManager;
 
 public abstract class Command {
-    RichRail richRail = RichRail.getInstance();
+    TrainManager trainManager = TrainManager.getInstance();
     ParserFacade parserFacade = new ParserFacade();
 
     static Client client = Client.getInstance();

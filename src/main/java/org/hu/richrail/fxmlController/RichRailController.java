@@ -6,15 +6,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import org.hu.richrail.model_old.RichRail;
-import org.hu.richrail.model_old.Train;
+import org.hu.richrail.model.Train;
+import org.hu.richrail.model.TrainManager;
 
 import java.net.URL;
-import java.util.*;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.ResourceBundle;
 
-public class RichRailController implements Initializable, Observer {
-    private RichRail richRail = RichRail.getInstance();
-
+public class RichRailController extends Controller implements Initializable, Observer {
     @FXML
     private ComboBox<Train> trainCombo;
 
@@ -35,7 +35,7 @@ public class RichRailController implements Initializable, Observer {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        richRail.addObserver(this);
+        trainManager.addObserver(this);
 
         trainCombo.setOnAction(event ->
                 selectTrain(trainCombo.getSelectionModel().getSelectedItem())
@@ -88,7 +88,7 @@ public class RichRailController implements Initializable, Observer {
         System.out.println("setTrainCombo");
 
         trainCombo.getItems().setAll(
-                richRail.getTrains()
+                trainManager.getTrains()
         );
     }
 
@@ -96,27 +96,36 @@ public class RichRailController implements Initializable, Observer {
         System.out.println("setTrainName: " + name);
 
         if (getSelectedTrain() != null) {
-            getSelectedTrain().setName(name);
+            try {
+                getSelectedTrain().setName(name);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-            richRail.changed();
+            trainManager.changed();
         }
     }
 
     private void deleteTrain() {
         if (getSelectedTrain() != null)
-            richRail.removeTrain(getSelectedTrain());
+            trainManager.removeTrain(getSelectedTrain());
     }
 
     @Override
     public void update(Observable o, Object arg) {
         Train selectedTrain = getSelectedTrain();
 
-        if (o instanceof RichRail)
+        if (o instanceof TrainManager)
             setTrainCombo();
 
-        if (richRail.getTrains().contains(selectedTrain))
+        if (trainManager.getTrains().contains(selectedTrain))
             selectTrain(selectedTrain);
         else
             selectTrain(null);
+    }
+
+    @Override
+    protected void show() {
+
     }
 }

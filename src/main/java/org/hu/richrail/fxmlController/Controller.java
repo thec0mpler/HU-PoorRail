@@ -5,15 +5,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.hu.richrail.model_old.RichRail;
+import org.hu.richrail.model.TrainManager;
 
 import java.io.IOException;
 
+
 public abstract class Controller {
-    private RichRail richRail = RichRail.getInstance();
+    protected TrainManager trainManager = TrainManager.getInstance();
     private Window parentWindow;
     private String title;
     private String resource;
+
+    public Controller() {
+    }
 
     public Controller(Window parentWindow, String title, String resource) {
         this.parentWindow = parentWindow;

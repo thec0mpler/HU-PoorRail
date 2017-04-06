@@ -1,7 +1,7 @@
 package org.hu.richrail.cli.command;
 
 import org.hu.command_line_parser.CommandParser;
-import org.hu.richrail.model_old.Train;
+import org.hu.richrail.model.Train;
 
 public class NewTrainCommand extends Command {
     public NewTrainCommand() {
@@ -25,7 +25,7 @@ public class NewTrainCommand extends Command {
 
         Train train = new Train(name);
 
-        if (richRail.addTrain(train)) {
+        if (trainManager.addTrain(train)) {
             return "Add train added, name '" + train.getName() + "'";
         } else {
             return "Train already exists: '" + train.getName() + "'";

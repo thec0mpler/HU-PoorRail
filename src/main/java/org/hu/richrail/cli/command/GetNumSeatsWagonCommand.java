@@ -1,7 +1,7 @@
 package org.hu.richrail.cli.command;
 
 import org.hu.command_line_parser.CommandParser;
-import org.hu.richrail.model_old.vehicle.Wagon;
+import org.hu.richrail.model.Wagon;
 
 public class GetNumSeatsWagonCommand extends Command {
     public GetNumSeatsWagonCommand() {
@@ -17,7 +17,7 @@ public class GetNumSeatsWagonCommand extends Command {
     @Override
     public String execute(CommandParser parser) throws Exception {
         String wagonName = parser.getRequiredArgument();
-        Wagon wagon = richRail.getWagon(wagonName);
+        Wagon wagon = trainManager.getWagonByName(wagonName);
 
         if (null != wagon) {
             return "Wagon '" + wagon.getName() + "' has " + wagon.getSeats() + " seats";
