@@ -1,6 +1,7 @@
 package org.hu.richrail.cli.command;
 
 import org.hu.command_line_parser.CommandParser;
+import org.hu.richrail.model.Wagon;
 
 public class NewWagonCommand extends Command {
     public NewWagonCommand() {
@@ -21,6 +22,16 @@ public class NewWagonCommand extends Command {
 
     @Override
     public String execute(CommandParser parser) throws Exception {
-        return null;
+        String name = parser.getRequiredArgument();
+
+        Wagon wagon = new Wagon(name);
+
+
+        if (trainManager.addWagon(wagon)){
+            return "Add wagon added, name '" + wagon.getName() + "'";
+        } else {
+            return "Wagon already exists: '" + wagon.getName() + "'";
+        }
     }
+
 }

@@ -61,9 +61,11 @@ public class NewTrainController extends Controller implements Initializable {
     }
 
     private void submit() {
+        RichRailController richRailController = new RichRailController();
         try {
             trainManager.addTrain(
                     new Train(nameTextField.getText())
+
             );
         } catch (Exception e) {
             e.printStackTrace();

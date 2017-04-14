@@ -16,6 +16,9 @@ public class TrainManager extends Observable {
         return instance;
     }
 
+//    public void editTrain()
+//        if()
+
     public boolean addTrain(Train train) {
         if (!trains.contains(train)) {
             trains.add(train);
@@ -33,8 +36,8 @@ public class TrainManager extends Observable {
     }
 
     public Train getTrainByName(String name) {
-        for (Train train: trains) {
-            if(train.getName().equals(name))
+        for (Train train : trains) {
+            if (train.getName().equals(name))
                 return train;
         }
 
@@ -43,15 +46,24 @@ public class TrainManager extends Observable {
 
     public void removeTrain(Train train) {
         trains.remove(train);
+
+        changed();
     }
 
     public List<Wagon> getWagons() {
         return wagons;
     }
 
-    public void addWagon(Wagon wagon) {
-        wagons.add(wagon);
+    public boolean addWagon(Wagon wagon) {
+        if (!wagons.contains(wagon)) {
+            wagons.add(wagon);
+
+        changed();
+
+        return true;
     }
+    return false;
+}
 
     public Wagon getWagonByName(String name) {
         for (Wagon wagon: wagons) {
@@ -64,6 +76,8 @@ public class TrainManager extends Observable {
 
     public void removeWagon(Wagon wagon) {
         wagons.remove(wagon);
+
+        changed();
     }
 
     public void changed() {
