@@ -3,7 +3,6 @@ package org.hu.richrail.fxmlController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -11,15 +10,16 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.hu.richrail.model.Train;
 import org.hu.richrail.model.Wagon;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WagonController extends Controller implements Initializable {
-    @FXML
+    private boolean isNew;
     private Wagon wagon;
+    private Train train;
 
     @FXML
     private TextField nameTextField;
@@ -30,37 +30,31 @@ public class WagonController extends Controller implements Initializable {
     @FXML
     private Button submitButton ;
 
-    void init(Window window) {
+    void init(Window window, Wagon wagon, Train train) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Wagon.fxml"));
-            Stage terminalStage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Wagon.fxml"));
 
+            Stage terminalStage = new Stage();
             terminalStage.setTitle("Wagon");
-            terminalStage.setScene(new Scene(root));
+            terminalStage.setScene(new Scene(loader.load()));
             terminalStage.setResizable(false);
             terminalStage.initModality(Modality.APPLICATION_MODAL);
+
+            WagonController wagonController = loader.getController();
+            wagonController.setWagon(wagon);
+            wagonController.setTrain(train);
 
             if (window != null)
                 terminalStage.initOwner(window);
 
             terminalStage.showAndWait();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    void init(Window window, Wagon wagon) {
-        System.out.println("init1");
-        System.out.println(wagon);
-        this.wagon = wagon;
-
-        init(window);
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("init2");
-
         nameTextField.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode().equals(KeyCode.ENTER))
                 submit();
@@ -71,26 +65,39 @@ public class WagonController extends Controller implements Initializable {
                 submit();
         });
 
-        submitButton.setOnAction(event -> submit()
-        );
+        submitButton.setOnAction(event -> submit());
+    }
 
-        System.out.println(this.wagon);
+    public void setWagon(Wagon wagon) {
+        isNew = wagon == null;
+        this.wagon = wagon;
 
         if (wagon != null) {
-            System.out.println("test");
-            System.out.println(wagon.getName());
             nameTextField.setText(wagon.getName());
             seatsTextField.setText(String.valueOf(wagon.getSeats()));
         }
     }
 
+    public void setTrain(Train train) {
+        this.train = train;
+    }
+
     private void submit() {
-        // System.out.println(nameTextField.getText());
-        // System.out.println(seatsTextField.getText());
         try {
-            trainManager.addWagon(
-                    new Wagon(nameTextField.getText())
-            );
+            String name = nameTextField.getText();
+            int seats = Integer.parseInt(seatsTextField.getText());
+
+            if (isNew) {
+                Wagon wagon = new Wagon(name, seats);
+                wagon.setTrain(train);
+
+                trainManager.addWagon(wagon);
+            } else {
+                wagon.setName(name);
+                wagon.setSeats(seats);
+            }
+
+            trainManager.changed();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -104,6 +111,5 @@ public class WagonController extends Controller implements Initializable {
 
     @Override
     protected void show() {
-
     }
 }

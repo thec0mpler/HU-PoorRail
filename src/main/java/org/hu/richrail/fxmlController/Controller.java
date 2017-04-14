@@ -16,7 +16,7 @@ public abstract class Controller {
     private String title;
     private String resource;
 
-    public Controller() {
+    Controller() {
     }
 
     public Controller(Window parentWindow, String title, String resource) {
@@ -30,8 +30,8 @@ public abstract class Controller {
     private void init() {
         try {
             Parent root = this.getRoot();
-            Stage stage = this.getStage(root);
 
+            this.getStage(root);
             this.show();
         } catch (IOException e) {
             e.printStackTrace();

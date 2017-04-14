@@ -65,7 +65,6 @@ public class NewTrainController extends Controller implements Initializable {
         try {
             trainManager.addTrain(
                     new Train(nameTextField.getText())
-
             );
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,6 +80,5 @@ public class NewTrainController extends Controller implements Initializable {
 
     @Override
     protected void show() {
-
     }
 }

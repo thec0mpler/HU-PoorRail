@@ -6,6 +6,7 @@ import java.util.Observable;
 
 public class TrainManager extends Observable {
     private static TrainManager instance = new TrainManager();
+
     private List<Train> trains = new ArrayList<>();
     private List<Wagon> wagons = new ArrayList<>();
 
@@ -14,21 +15,6 @@ public class TrainManager extends Observable {
 
     public static TrainManager getInstance() {
         return instance;
-    }
-
-//    public void editTrain()
-//        if()
-
-    public boolean addTrain(Train train) {
-        if (!trains.contains(train)) {
-            trains.add(train);
-
-            changed();
-
-            return true;
-        }
-
-        return false;
     }
 
     public List<Train> getTrains() {
@@ -44,6 +30,29 @@ public class TrainManager extends Observable {
         return null;
     }
 
+    public int getTrainSeats(Train train) {
+        int seats = 0;
+        List<Wagon> wagons = getWagonsByTrain(train);
+
+        for (Wagon wagon : wagons) {
+            seats += wagon.getSeats();
+        }
+
+        return seats;
+    }
+
+    public boolean addTrain(Train train) {
+        if (!trains.contains(train)) {
+            trains.add(train);
+
+            changed();
+
+            return true;
+        }
+
+        return false;
+    }
+
     public void removeTrain(Train train) {
         trains.remove(train);
 
@@ -54,16 +63,16 @@ public class TrainManager extends Observable {
         return wagons;
     }
 
-    public boolean addWagon(Wagon wagon) {
-        if (!wagons.contains(wagon)) {
-            wagons.add(wagon);
+    public List<Wagon> getWagonsByTrain(Train train) {
+        List<Wagon> trainWagons = new ArrayList<>();
 
-        changed();
+        for (Wagon wagon : wagons) {
+            if (wagon.getTrain().equals(train))
+                trainWagons.add(wagon);
+        }
 
-        return true;
+        return trainWagons;
     }
-    return false;
-}
 
     public Wagon getWagonByName(String name) {
         for (Wagon wagon: wagons) {
@@ -72,6 +81,18 @@ public class TrainManager extends Observable {
         }
 
         return null;
+    }
+
+    public boolean addWagon(Wagon wagon) {
+        if (!wagons.contains(wagon)) {
+            wagons.add(wagon);
+
+            changed();
+
+            return true;
+        }
+
+        return false;
     }
 
     public void removeWagon(Wagon wagon) {

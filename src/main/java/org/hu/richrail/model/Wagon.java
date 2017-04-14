@@ -20,7 +20,7 @@ public class Wagon {
 
     public void setName(String name) throws Exception {
         if (name == null || name.isEmpty())
-            throw new Exception("name is empty, not allowed!");
+            throw new Exception("Name is empty, not allowed!");
 
         this.name = name;
     }
@@ -30,7 +30,7 @@ public class Wagon {
     }
 
     public void setSeats(int seats) throws Exception {
-        if (seats < 0 && seats > 50)
+        if (seats < 0 || seats > 50)
             throw new Exception("The seats are not between 0 and 50");
 
         this.seats = seats;
@@ -57,7 +57,6 @@ public class Wagon {
     @Override
     public int hashCode() {
         return name != null ? name.hashCode() : 0;
-
     }
 
     @Override

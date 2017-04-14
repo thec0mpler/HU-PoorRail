@@ -21,7 +21,7 @@ public class GetNumSeatsTrainCommand extends Command {
         Train train = trainManager.getTrainByName(trainName);
 
         if (null != train) {
-            return "Train '" + train.getName() + "' has " + train.getSeats() + " seats";
+            return "Train '" + train.getName() + "' has " + trainManager.getTrainSeats(train) + " seats";
         }
 
         return "Train '" + trainName + "' does not exist";

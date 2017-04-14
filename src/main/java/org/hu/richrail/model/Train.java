@@ -33,10 +33,7 @@ public class Train {
         return name.hashCode();
     }
 
-    public int getSeats() {
-        return 0;
-    }
-
+    @Override
     public String toString() {
         return name;
     }

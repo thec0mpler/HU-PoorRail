@@ -15,38 +15,30 @@
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
-        <Label maxHeight="1.7976931348623157E308" text="Select train" />
+        <Label maxHeight="1.7976931348623157E308" text="Select train" prefWidth="80.0" />
         <ComboBox fx:id="trainCombo" prefWidth="200.0" />
         <Pane HBox.hgrow="ALWAYS" />
-        <Button fx:id="newTrainButton" mnemonicParsing="false" text="Add train" />   <!-- add train /-->
+        <Button fx:id="newTrainButton" mnemonicParsing="false" text="Add train" />
     </HBox>
 
     <HBox spacing="20.0">
         <padding>
-            <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
-        <Label maxHeight="1.7976931348623157E308"  text="Name Train" />
+        <Label maxHeight="1.7976931348623157E308" text="Name Train" prefWidth="80.0" />
         <TextField fx:id="trainNameTextField" prefWidth="200.0" />
         <Pane HBox.hgrow="ALWAYS" />
-        <Button fx:id="deleteTrainButton" mnemonicParsing="false" text="Delete train" />  <!-- delete train /-->
-
+        <Button fx:id="deleteTrainButton" mnemonicParsing="false" text="Delete train" />
     </HBox>
 
-    <Label text="Train" VBox.vgrow="ALWAYS">
-        <padding>
-            <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
-        </padding>
-    </Label>
-    
     <Separator />
 
-    <!--<VBox fx:id="wagonBox" disable="true">-->
-
+    <VBox fx:id="wagonBox" disable="true">
         <HBox spacing="20.0">
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
-            <Label maxHeight="1.7976931348623157E308" text="Select wagon" />
+            <Label maxHeight="1.7976931348623157E308" text="Select wagon" prefWidth="80.0" />
             <ComboBox fx:id="wagonCombo" prefWidth="200.0" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button fx:id="addWagonButton" mnemonicParsing="false" text="Add wagon" />
@@ -54,59 +46,28 @@
 
         <HBox spacing="20.0">
             <padding>
-                <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+                <Insets left="10.0" right="10.0" top="10.0" />
             </padding>
-            <Label maxHeight="1.7976931348623157E308"  text="Name Wagon" />
-            <!--<ComboBox fx:id="wagonCombo" prefWidth="200.0" />-->
+            <Label text="Name Wagon" prefWidth="80.0" />
             <TextField fx:id="wagonNameTextField" prefWidth="200.0" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button fx:id="deleteWagonButton" mnemonicParsing="false" text="Delete wagon" />
-
         </HBox>
-
-        <!--<HBox spacing="20.0">-->
-            <!--<padding>-->
-                <!--<Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />-->
-            <!--</padding>-->
-            <!--<Label maxHeight="1.7976931348623157E308" prefWidth="60.0" text="Wagon " />  &lt;!&ndash; select wagon (Jonathan) /&ndash;&gt;-->
-            <!--<ChoiceBox prefWidth="200.0" />-->
-        <!--</HBox>-->
 
         <HBox spacing="20.0">
             <padding>
-                <Insets bottom="10.0" left="350.0" right="10.0" top="10.0" />
+                <Insets bottom="10.0" right="10.0" top="10.0" />
             </padding>
-            <Button fx:id="editWagon" mnemonicParsing="false" text="Edit wagon">  <!--EDIT WAGON -->
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="editWagon" contentDisplay="TOP" mnemonicParsing="false" text="Edit wagon">
                 <HBox.margin>
                     <Insets />
                 </HBox.margin>
             </Button>
-            <!--<Button mnemonicParsing="false" text="Delete wagon" />                      &lt;!&ndash; delete wagon (Jonathan) /&ndash;&gt;-->
-            <!--<VBox.margin>-->
-                <!--<Insets left="80.0" />-->
-            <!--</VBox.margin>-->
         </HBox>
-
-
-        <Label text="Wagon" VBox.vgrow="ALWAYS">
-            <padding>
-                <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
-            </padding>
-        </Label>
-        <Separator />
-        <!--<HBox spacing="20.0">-->
-            <!--<padding>-->
-                <!--<Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />-->
-            <!--</padding>-->
-            <!--<Button fx:id="addWagonButton" mnemonicParsing="false" text="Add wagon" />    &lt;!&ndash; add wagon (Jonathan) /&ndash;&gt;-->
-            <!--<VBox.margin>-->
-                <!--<Insets left="80.0" />-->
-            <!--</VBox.margin>-->
-        <!--</HBox>-->
-    <!--</VBox>-->
+    </VBox>
 
     <Separator />
-
 
     <HBox spacing="20.0">
         <padding>
@@ -116,20 +77,4 @@
         <Button fx:id="openTerminalButton" mnemonicParsing="false" text="&gt;_ Open terminal" />
         <Pane HBox.hgrow="ALWAYS" />
     </HBox>
-
-    <!--farshid test-->
-    <!--<HBox spacing="20.0">-->
-        <!--<padding>-->
-            <!--<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />-->
-        <!--</padding>-->
-        <!--<Label maxHeight="1.7976931348623157E308" text="Select wagon" />-->
-        <!--<ComboBox fx:id="wagonCombo" prefWidth="200.0" />-->
-        <!--<Pane HBox.hgrow="ALWAYS" />-->
-        <!--<Button fx:id="addWagonButton" mnemonicParsing="false" text="Add wagi" />-->
-    <!--</HBox>-->
-
-
-    <Separator />
-
-
 </VBox>

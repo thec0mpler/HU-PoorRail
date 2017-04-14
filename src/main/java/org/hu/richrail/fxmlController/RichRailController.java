@@ -34,16 +34,16 @@ public class RichRailController extends Controller implements Initializable, Obs
     private Button addWagonButton;
 
     @FXML
-    private Button editWagon;               //farshid
+    private Button editWagon;
 
     @FXML
-    private ComboBox<Wagon> wagonCombo;   //farshid
+    private ComboBox<Wagon> wagonCombo;
 
     @FXML
-    private Button deleteWagonButton;     //farshid
+    private Button deleteWagonButton;
 
     @FXML
-    private TextField wagonNameTextField; //farshid
+    private TextField wagonNameTextField;
 
     @FXML
     private Button openTerminalButton;
@@ -80,52 +80,53 @@ public class RichRailController extends Controller implements Initializable, Obs
 
         addWagonButton.setOnAction(event ->
                 new WagonController().init(
-                        addWagonButton.getScene().getWindow()
+                        addWagonButton.getScene().getWindow(),
+                        null,
+                        getSelectedTrain()
                 )
         );
 
-        editWagon.setOnAction(event -> {
-            new WagonController().init(
-                    editWagon.getScene().getWindow(),
-                    getSelectedWagon()
-            );
-        });
+        editWagon.setOnAction(event ->
+                new WagonController().init(
+                        editWagon.getScene().getWindow(),
+                        getSelectedWagon(),
+                        getSelectedTrain()
+                )
+        );
 
-        wagonNameTextField.setOnKeyPressed(keyEvent -> {                //farshid
+        wagonNameTextField.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-                // @todo maak setwagonName aan
                 setWagonName(wagonNameTextField.getText());
             }
         });
 
-        wagonCombo.setOnAction(event ->                                 // farshid
+        wagonCombo.setOnAction(event ->
                 selectWagon(wagonCombo.getSelectionModel().getSelectedItem())
         );
     }
-//_________________________________________________________________________________________________________________
 
-    private Wagon getSelectedWagon() {                                  //farshid werkt niet!
-
+    private Wagon getSelectedWagon() {
         return wagonCombo.getSelectionModel().getSelectedItem();
     }
 
-    private void selectWagon(Wagon wagon) {                             //farshid werkt niet!
+    private void selectWagon(Wagon wagon) {
         System.out.println("Selected wagon: " + wagon);
 
         String wagonName = "";
         if (wagon != null) {
             wagonName = wagon.getName();
         }
+
         wagonCombo.getSelectionModel().select(wagon);
         wagonNameTextField.setText(wagonName);
-
+        editWagon.setDisable(wagon == null);
     }
 
     private void setWagonCombo() {
         System.out.println("setWagonCombo");
 
         wagonCombo.getItems().setAll(
-                trainManager.getWagons()
+                trainManager.getWagonsByTrain(getSelectedTrain())
         );
     }
     private void setWagonName(String name) {
@@ -146,7 +147,6 @@ public class RichRailController extends Controller implements Initializable, Obs
             trainManager.removeWagon(getSelectedWagon());
         }
     }
-//____________________________________________________________________________________________________________________
 
     private Train getSelectedTrain() {
         return trainCombo.getSelectionModel().getSelectedItem();
@@ -163,13 +163,16 @@ public class RichRailController extends Controller implements Initializable, Obs
         trainCombo.getSelectionModel().select(train);
         trainNameTextField.setText(trainName);
 
-        //wagonBox.setDisable(train == null);
+        wagonBox.setDisable(train == null);
+
+        wagonCombo.getSelectionModel().clearSelection();
+        setWagonCombo();
     }
 
     private void setTrainCombo() {
         System.out.println("setTrainCombo");
 
-        trainCombo.getItems().setAll(                   // set
+        trainCombo.getItems().setAll(
                 trainManager.getTrains()
         );
     }
@@ -205,14 +208,14 @@ public class RichRailController extends Controller implements Initializable, Obs
 
         if (trainManager.getTrains().contains(selectedTrain))
             selectTrain(selectedTrain);
+
         if(trainManager.getWagons().contains(selectedWagon))
             selectWagon(selectedWagon);
         else
-            selectTrain(null);
+            selectWagon(null);
     }
 
     @Override
     protected void show() {
-
     }
 }

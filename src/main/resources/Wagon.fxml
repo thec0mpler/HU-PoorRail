@@ -6,12 +6,11 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hu.richrail.fxmlController.WagonController">
     <HBox>
         <children>
-
             <Label fx:id="nameLabel" maxHeight="1.7976931348623157E308" prefWidth="50.0" text="Name">
-
                 <HBox.margin>
                     <Insets right="10.0" />
-                </HBox.margin></Label>
+                </HBox.margin>
+            </Label>
             <TextField fx:id="nameTextField" prefWidth="200.0" />
         </children>
         <VBox.margin>
@@ -23,7 +22,8 @@
             <Label fx:id="seatsLabel" maxHeight="1.7976931348623157E308" prefWidth="50.0" text="Seats">
                 <HBox.margin>
                     <Insets right="10.0" />
-                </HBox.margin></Label>
+                </HBox.margin>
+            </Label>
             <TextField fx:id="seatsTextField" prefWidth="200.0" text="20" />
         </children>
     </HBox>
