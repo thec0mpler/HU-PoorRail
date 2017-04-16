@@ -28,7 +28,12 @@ public class WagonController extends Controller implements Initializable {
     private TextField seatsTextField;
 
     @FXML
-    private Button submitButton ;
+    private Button submitButton;
+
+    @Override
+    void init(Window window) {
+        init(window, null, null);
+    }
 
     void init(Window window, Wagon wagon, Train train) {
         try {
@@ -104,6 +109,7 @@ public class WagonController extends Controller implements Initializable {
 
         close();
     }
+
     private void close() {
         Stage stage = (Stage) submitButton.getScene().getWindow();
         stage.close();

@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TerminalController implements Initializable {
+public class TerminalController extends Controller implements Initializable {
     @FXML
     private TextArea logTextArea;
 
@@ -28,6 +28,7 @@ public class TerminalController implements Initializable {
     @FXML
     private Button closeButton;
 
+    @Override
     void init(Window window) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/Terminal.fxml"));
@@ -68,7 +69,7 @@ public class TerminalController implements Initializable {
             }
         });
 
-        closeButton.setOnAction(event -> this.close());
+        closeButton.setOnAction(event -> close());
     }
 
     private void close() {

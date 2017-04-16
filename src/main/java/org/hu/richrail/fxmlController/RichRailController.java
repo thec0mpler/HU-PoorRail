@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+import javafx.stage.Window;
 import org.hu.richrail.model.Train;
 import org.hu.richrail.model.TrainManager;
 import org.hu.richrail.model.Wagon;
@@ -47,6 +48,10 @@ public class RichRailController extends Controller implements Initializable, Obs
 
     @FXML
     private Button openTerminalButton;
+
+    @Override
+    public void init(Window window) {
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

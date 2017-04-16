@@ -18,14 +18,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewTrainController extends Controller implements Initializable {
-    private Window parentWindow;
-
     @FXML
     private TextField nameTextField;
 
     @FXML
     private Button addButton;
 
+    @Override
     void init(Window window) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/NewTrain.fxml"));
@@ -61,7 +60,6 @@ public class NewTrainController extends Controller implements Initializable {
     }
 
     private void submit() {
-        RichRailController richRailController = new RichRailController();
         try {
             trainManager.addTrain(
                     new Train(nameTextField.getText())
