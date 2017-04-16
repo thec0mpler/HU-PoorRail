@@ -70,7 +70,11 @@ public class CommandParser {
             throw new Exception("Command has not a required argument");
         }
 
-        return context.get(0);
+        if (!context.isEmpty()) {
+            return context.get(0);
+        }
+
+        return null;
     }
 
     /**
