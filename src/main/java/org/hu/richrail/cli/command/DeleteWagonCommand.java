@@ -1,6 +1,7 @@
 package org.hu.richrail.cli.command;
 
 import org.hu.command_line_parser.CommandParser;
+import org.hu.richrail.model.Wagon;
 
 public class DeleteWagonCommand extends Command {
     public DeleteWagonCommand() {
@@ -15,6 +16,15 @@ public class DeleteWagonCommand extends Command {
 
     @Override
     public String execute(CommandParser parser) throws Exception {
-        return null;
+        String wagonName = parser.getRequiredArgument();
+        Wagon wagon = trainManager.getWagonByName(wagonName);
+
+        if (wagon != null) {
+            trainManager.removeWagon(wagon);
+
+            return "Wagon '" + wagonName + "' deleted";
+        }
+
+        return  "Wagon '" + wagonName + "' does not exist";
     }
 }

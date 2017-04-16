@@ -1,6 +1,5 @@
 package org.hu.richrail.fxmlController;
 
-import org.hu.richrail.cli.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +12,8 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.hu.richrail.cli.Client;
+import org.hu.richrail.cli.command.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,6 +52,16 @@ public class TerminalController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Client client = Client.getInstance();
+
+        client.addCommand(new AddToCommand());
+        client.addCommand(new DeleteTrainCommand());
+        client.addCommand(new DeleteWagonCommand());
+        client.addCommand(new GetNumSeatsTrainCommand());
+        client.addCommand(new GetNumSeatsWagonCommand());
+        client.addCommand(new GetWagonsCommand());
+        client.addCommand(new NewTrainCommand());
+        client.addCommand(new NewWagonCommand());
+        client.addCommand(new RemoveFromCommand());
 
         inputTextField.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode().equals(KeyCode.ENTER)) {

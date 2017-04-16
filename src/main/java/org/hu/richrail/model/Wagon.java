@@ -44,6 +44,10 @@ public class Wagon {
         this.train = train;
     }
 
+    public void removeTrain() {
+        train = null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

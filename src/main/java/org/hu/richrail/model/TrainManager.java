@@ -67,7 +67,7 @@ public class TrainManager extends Observable {
         List<Wagon> trainWagons = new ArrayList<>();
 
         for (Wagon wagon : wagons) {
-            if (wagon.getTrain().equals(train))
+            if (null != wagon.getTrain() && wagon.getTrain().equals(train))
                 trainWagons.add(wagon);
         }
 
