@@ -77,8 +77,4 @@ public class NewTrainController extends Controller implements Initializable {
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }
-
-    @Override
-    protected void show() {
-    }
 }

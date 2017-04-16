@@ -32,7 +32,6 @@ public abstract class Controller {
             Parent root = this.getRoot();
 
             this.getStage(root);
-            this.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,6 +54,4 @@ public abstract class Controller {
 
         return stage;
     }
-
-    protected abstract void show();
 }

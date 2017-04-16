@@ -108,8 +108,4 @@ public class WagonController extends Controller implements Initializable {
         Stage stage = (Stage) submitButton.getScene().getWindow();
         stage.close();
     }
-
-    @Override
-    protected void show() {
-    }
 }

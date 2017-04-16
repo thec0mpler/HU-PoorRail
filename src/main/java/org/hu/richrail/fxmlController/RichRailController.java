@@ -214,8 +214,4 @@ public class RichRailController extends Controller implements Initializable, Obs
         else
             selectWagon(null);
     }
-
-    @Override
-    protected void show() {
-    }
 }
